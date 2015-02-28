@@ -71,6 +71,19 @@ class AuthController extends BaseController {
 		
 		// dd($user_data);
 		$this->mydd($user_data);
+
+		// 存到session
+		Session::put('user_session', $user_data);
+		echo "<hr />";
+		echo "Session 裡的東西：";
+		$this->mydd(Session::get('user_session', '這是預設值，沒設定過就用這個囉！！'));
+
+		// 清掉全部session
+		Session::flush();
+		echo "<hr />";
+		echo "Session 裡現在什麼都沒有：";
+		$this->mydd(Session::get('user_session', '這是預設值，沒設定過就用這個囉！！'));
+
 	}
 
 	/**
